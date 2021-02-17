@@ -1,0 +1,29 @@
+Question B1:  What is the value of %cr4 at the start of _start before PSE is enabled?  What is its value afterward?
+
+You can find the contents of CR4 after it is moved into EAX on the first instruction of _Start. Before PSE is enabled, CR4 holds 0x0000 (hex).  After, it holds 0x0010 (or'ing with 0x00000010 and moving into CR4).
+
+Question B2:  What is the size of this intial kernal stack in bytes as a 32-bit hex value?
+
+KSTACKSIZE = 0x1000 or (4096 bytes)
+
+Question B3:  What is process name of pid1?
+
+initcode
+
+Question B4:  What is the maximum number of processes that can exist at once in xv6?  What xv6 data structure limits this?
+
+The ptable limits the number of processes that can exist in xv6, it can hold up to 64 processes.
+
+Question B5:  from the xv6 shell, trigger the breakpoitn in exit and describe how you did it.
+
+I set a breakpoint for exit by using b exit in gdb.  Then i triggered the breakpoint by running a simple command (ls) in the xv6 shell.
+
+Question B6: What state does a running process first change to after trigger an exit system call?
+
+It goes from RUNNING to ZOMBIE
+
+Question B7: What is the name and PID of the process that is exiting?  And what is the name and pid of the parent of the rpcoess that is exiting?
+
+using p *myproc() and p *myproc().parent
+currently exiting =  ls (pid = 5),
+parent of ls = sh (pid = 2)
